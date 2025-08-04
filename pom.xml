@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Maven Project Object Model (POM) file for the Spring Boot Cluster application. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Inherits from Spring Boot's parent POM, providing default configurations and dependency management. -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.5</version>
-        <relativePath/>
+        <version>3.4.5</version> <!-- Specifies the Spring Boot version. -->
+        <relativePath/> <!-- Lookup parent from repository -->
     </parent>
 
     <groupId>com.example</groupId>
@@ -19,65 +21,65 @@
     <description>Spring Boot Cluster Application with Hazelcast Session Sharing</description>
 
     <properties>
-        <java.version>17</java.version>
-        <hazelcast.version>5.3.6</hazelcast.version>
+        <java.version>17</java.version> <!-- Specifies the Java version to be used. -->
+        <hazelcast.version>5.3.6</hazelcast.version> <!-- Defines the Hazelcast version for consistency. -->
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starters -->
+        <!-- Spring Boot Starters provide convenient dependency management for common use cases. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId> <!-- Enables web capabilities, including embedded Tomcat. -->
         </dependency>
         
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId> <!-- Provides Spring Security features for authentication and authorization. -->
         </dependency>
         
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId> <!-- Adds production-ready features like monitoring and management. -->
         </dependency>
 
-        <!-- Hazelcast for Session Sharing -->
+        <!-- Hazelcast dependencies for distributed caching and session sharing. -->
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
-            <version>${hazelcast.version}</version>
+            <version>${hazelcast.version}</version> <!-- Core Hazelcast library. -->
         </dependency>
         
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-spring</artifactId>
-            <version>${hazelcast.version}</version>
+            <version>${hazelcast.version}</version> <!-- Integrates Hazelcast with Spring. -->
         </dependency>
 
-        <!-- Spring Session with Hazelcast -->
+        <!-- Spring Session with Hazelcast for managing HTTP sessions in a distributed environment. -->
         <dependency>
             <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-hazelcast</artifactId>
+            <artifactId>spring-session-hazelcast</artifactId> <!-- Enables Spring Session to use Hazelcast as its backing store. -->
         </dependency>
 
-        <!-- Development Tools -->
+        <!-- Development Tools for Spring Boot. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
+            <scope>runtime</scope> <!-- Only active during development runtime. -->
+            <optional>true</optional> <!-- Makes this dependency optional. -->
         </dependency>
 
-        <!-- Test Dependencies -->
+        <!-- Test Dependencies for unit and integration testing. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <scope>test</scope> <!-- Only active during test compilation and execution. -->
         </dependency>
         
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
+            <scope>test</scope> <!-- Provides utilities for testing Spring Security configurations. -->
         </dependency>
     </dependencies>
 
@@ -85,7 +87,7 @@
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <artifactId>spring-boot-maven-plugin</artifactId> <!-- Packages the application into an executable JAR. -->
             </plugin>
         </plugins>
     </build>
